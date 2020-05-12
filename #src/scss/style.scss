@@ -1,0 +1,111 @@
+//SCSS миксин для подключения шрифтов
+@mixin font($font_name, $file_name, $weight, $style) {
+  @font-face { 
+    font-family: $font_name; 
+    font-display: swap; 
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2"); 
+    font-weight: #{$weight}; 
+    font-style: #{$style}; 
+  }
+}
+
+
+
+//<Подкдючаем шрифты>================================
+//&subset=cyrillic-ext
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,700&subset=cyrillic-ext);
+@import "fonts";
+//</Подкдючаем шрифты>================================
+
+//<Шрифт по умолчанию>================================
+$fontFamily: "PT Sans";
+//</Шрифт по умолчанию>================================
+
+//<Переменные>==========================================
+$minWidth: 320px;
+$mw: 950;
+$md1: $mw + 12;
+$md1: 991.98;
+$md2: 767.98;
+$md3: 479.98;
+//</Переменные>==========================================
+
+// <Оболочка>=============================================
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  &._loaded {
+
+  }
+}
+// </Оболочка>=============================================
+
+// <Основная сетка>=========================================
+.container {
+  max-width: $mw + px;
+  margin: 0 auto;
+  @media (max-width: $md1+px) {
+    max-width: 970px;
+  }
+  @media (max-width: $md2+px) {
+    max-width: 750px;
+  }
+  @media (max-width: $md3+px) {
+    max-width: none;
+    padding: 0 10px;
+  }
+}
+// </Основная сетка>=========================================
+
+
+
+body {
+  margin: 0;
+  padding: 0;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #ffffff;
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+position: absolute;
+
+width: 1px;
+height: 1px;
+margin: -1px;
+border: 0;
+padding: 0;
+
+white-space: nowrap;
+clip-path: inset(100%);
+clip: rect(0 0 0 0);
+overflow: hidden;
+}
+
+
+img {
+max-width: 100%;
+height: auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@import "header";
